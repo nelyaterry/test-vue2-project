@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id='app'>
+    <VNotifications/>
+    <VHeader />
+        <router-view></router-view>
+    <VFooter />
   </div>
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VFooter from "@/components/VFooter";
+import VHeader from "@/components/headers/VHeader";
+import VNotifications from "@/components/notifications/VNotifications";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    VNotifications,
+    VHeader,
+    VFooter,
+  },
+  mounted() {
+    console.log(this.$store.getters["auth/isLoggedIn"])
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
 </style>
